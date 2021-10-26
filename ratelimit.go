@@ -28,7 +28,7 @@ func WithContext(ctx context.Context, rps int) (*ErrGroup, context.Context) {
 // time so that the ratelimit is not exceeded.
 func (e *ErrGroup) Go(fn func() error) {
 	<-e.ticker.C
-	go e.eg.Go(fn)
+	e.eg.Go(fn)
 }
 
 // Wait will wait until all jobs are processed. Once Wait() is called, no more jobs
